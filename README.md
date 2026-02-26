@@ -52,3 +52,45 @@ tempo_irrigacao.view(sim=simulador)
 
 #Anote os tempos sugeridos.
 
+
+
+
+#Questão 2:
+
+#Problemas: Sistema de Irrigação Automatizado – Custo x Benefício. Um produtor rural está avaliando se vale a pena instalar um sistema de irrigação automático com sensores e controle fuzzy. A decisão será baseada em dois fatores:
+#Custo de Instalação (em R$)
+
+#Ganho Esperado de Produção (em %)
+
+#Objetivo:
+
+#Avaliar o nível de benefício da instalação com base fuzzy, considerando:
+
+#Quanto menor o custo e maior o ganho, maior o benefício.
+
+#Se o custo for alto e o ganho for pequeno, o benefício é baixo.
+
+#Variáveis fuzzy:
+
+#Entradas:
+
+#Custo (baixo, médio, alto) → R 0aR 20.000
+
+#Ganho de Produção (baixo, médio, alto) → 0% a 50%
+
+#Saída:
+
+#Benefício (baixo, médio, alto) → 0 a 100
+
+custo = ctrl.Antecedent(np.arange(0, 20001, 1), )
+ganho_producao = ctrl.Antecedent(np.arange(0, 51, 1), )
+beneficio = ctrl.Consequent(np.arange(0, 101, 1), )
+
+custo.automf(3)
+ganho_producao.automf(3)
+
+regra1 = ctrl.Rule(custo['baixo'] & ganho_producao['alta'], beneficio['alto'])
+regra2 = ctrl.Rule(custo['alto'] & ganho_producao['baixo'], beneficio['baixo'])
+regra3 = ctrl.Rule(custo['medio'] & ganho_producao['medio'], beneficio['medio'])
+regra4 = ctrl.Rule(custo['alto'] & ganho_producao['baixo'], beneficio['baixo'])
+regra5
