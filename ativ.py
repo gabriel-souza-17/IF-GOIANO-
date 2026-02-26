@@ -5,4 +5,4 @@ import skfuzzy as fuzz
 from skfuzzy import control as ctrl
 import matplotlib.pyplot as plt
 
-print
+print ("Bem-vindo ao sistema de controle de temperatura fuzzy!")
